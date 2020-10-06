@@ -30,7 +30,7 @@
 <a name="license"></a>
 ### 4. Licence
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 
 <a name="contributing"></a>
 ### 5. Contributors
@@ -45,6 +45,4 @@
 <a name="questions"></a>
 ### 7. Contact Information
 
-Email: 
-
-GitHub: 
+GitHub: https://github.com/sclitty
