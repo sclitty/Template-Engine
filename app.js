@@ -10,31 +10,20 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
 
+// An array to store employee data
+const allEmployees = [];
+// An array to verify no identical IDs are created 
+const idArray = [];
 
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects  for each team member (using the correct classes as blueprints!)
 function generateEmployee() {
     inquirer.prompt(
         {
-            type: "input",
-            name:  "name",
-            message: "What is your First and Last name?"
-        },
-        {
-            type: "input",
-            name:  "id",
-            message: "What is your company ID?"
-        },
-        {
-            type: "input",
-            name:  "email",
-            message: "What is your company email?"
-        },
-        {
             type: "list",
             name: "role",
             message: "What is your company title?",
-            choices: ["Manager", "Engineer", "Intern"]
+            choices: ["Manager", "Engineer", "Intern", "Quit"]
         }).then(function({ choice }){
             switch (choice) {
                 case "Manager":
@@ -48,11 +37,95 @@ function generateEmployee() {
                 case "Intern":
                     createIntern();
                     break;
-            }
-        });
 
-        
+                default:
+                    buildTeam();
+            }
+        });     
+};
+
+// Make a Manager ===> function generateEmployee 
+function createManager() { 
+    inquirer.prompt([
+        {
+            type: "input", 
+            name: "managerName",
+            message: "What is your First and Last name?",
+            validate: answer => {
+                if (answer !== " ") {
+                    return true 
+                } 
+                return "Please enter Manager's name"
+            }
+        },
+        {
+            type: "input", 
+            name: "managerId",
+            message: "What is your company ID?",
+            validate: answer => {
+                const pass = answer.match(
+                    /^[1-9]\d*$/
+                )
+                if (pass) {
+                    if(idArray.includes(answer)) {
+                        return "This ID number is not valid"
+                    } else {
+                        return true
+                    }
+                }
+            }
+        },
+        {
+            type: "input", 
+            name: "managerEmail",
+            message: "What is your company Email?",
+            validate: answer => {
+                const pass = answer.match(
+                    /\S+@\S+\.\S+/
+                )
+                if (pass) {
+                    return true
+                } 
+                return "Please enter a valid email address."
+            }
+        },
+        {
+            type: "input", 
+            name: "managerOfficeNumber",
+            message: "What is your company Office Number?",
+            validate: answer => {
+                const pass = answer.match(
+                    /^[1-9]\d*$/
+                )
+                if (pass) {
+                    return true
+                } 
+                return "Please enter a valid office number."
+            }
+        }
+    ]).then(answers => {
+        const manager = new Manager (answers.managerName,answers.managerId, answers.managerEmail, answers.managerOfficeNumber)
+        allEmployees.push(manager)
+        idArray.push(answers.managerId)
+
+        generateEmployee();
+    })
+};
+
+// Make an Engineer ===> function generateEmployee
+function createEngineer()
+
+// Make an Intern ===> function generateEmployee
+function createIntern()
+
+// Build the team and render the HTML 
+function buildTeam() {
+    if (!fs.existsSync(OUTPUT_DIR)) {
+        fs.mkdirSync(OUTPUT_DIR)
+      }
+      fs.writeFileSync(outputPath, render(allEmployees), "utf-8");  
 }
+
 
 // After the user has input all employees desired, call the `render` function (required
 // above) and pass in an array containing all employee objects; the `render` function will
