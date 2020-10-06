@@ -5,8 +5,6 @@
 1. [ Introduction ](#intro)
 2. [ Installation ](#install)
 3. [ Usage ](#usage)
-4. [ License ](#license)
-5. [ Contributors ](#contributing)
 6. [ Tests ](#tests)
 7. [ Questions ](#questions)
 
@@ -15,32 +13,23 @@
 <a name="intro"></a>
 ## 1. Introduction
 
+>Using Inquirer to prompt the user to create employee profiles that will generate a html document with user information displayed.
 
 
 <a name="install"></a>
 ### 2. Installation
 
-
+>Install Inquirer and Jest NPM
 
 <a name="usage"></a>
 ### 3. Usage
 
-
-
-<a name="license"></a>
-### 4. Licence
-
-
-
-<a name="contributing"></a>
-### 5. Contributors
-
-
+>Follow prompts to create employee profiles
 
 <a name="tests"></a>
 ### 6. Tests
 
-
+>functionality testing can be found the the `test` folder.
 
 <a name="questions"></a>
 ### 7. Contact Information
