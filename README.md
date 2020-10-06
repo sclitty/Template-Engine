@@ -5,8 +5,8 @@
 1. [ Introduction ](#intro)
 2. [ Installation ](#install)
 3. [ Usage ](#usage)
-6. [ Tests ](#tests)
-7. [ Questions ](#questions)
+4. [ Tests ](#tests)
+5. [ Contact Information ](#questions)
 
 <br>
 
@@ -27,11 +27,11 @@
 >Follow prompts to create employee profiles
 
 <a name="tests"></a>
-### 6. Tests
+### 4. Tests
 
 >functionality testing can be found the the `test` folder.
 
 <a name="questions"></a>
-### 7. Contact Information
+### 5. Contact Information
 
 GitHub: https://github.com/sclitty
