@@ -113,10 +113,122 @@ function createManager() {
 };
 
 // Make an Engineer ===> function generateEmployee
-function createEngineer()
+function createEngineer() {
+    inquirer.prompt([
+        {
+            type: "input", 
+            name: "engineerName",
+            message: "What is your First and Last name?",
+            validate: answer => {
+                if (answer !== " ") {
+                    return true 
+                } 
+                return "Please enter Engineer's name"
+            }
+        },
+        {
+            type: "input", 
+            name: "engineerId",
+            message: "What is your company ID?",
+            validate: answer => {
+                const pass = answer.match(
+                    /^[1-9]\d*$/
+                )
+                if (pass) {
+                    if(idArray.includes(answer)) {
+                        return "This ID number is not valid"
+                    } else {
+                        return true
+                    }
+                }
+            }
+        },
+        {
+            type: "input", 
+            name: "engineerEmail",
+            message: "What is your company Email?",
+            validate: answer => {
+                const pass = answer.match(
+                    /\S+@\S+\.\S+/
+                )
+                if (pass) {
+                    return true
+                } 
+                return "Please enter a valid email address."
+            }
+        },
+        {
+            type: "input", 
+            name: "engineerGithub",
+            message: "What is your github username?"
+        }
+    ]).then(answers => {
+        const engineer = new Engineer (answers.engineerName,answers.engineerId, answers.engineerEmail, answers.engineerGithub)
+        allEmployees.push(engineer)
+        idArray.push(answers.engineerId)
+
+        generateEmployee();
+    })
+};
 
 // Make an Intern ===> function generateEmployee
-function createIntern()
+function createIntern() {
+    inquirer.prompt([
+        {
+            type: "input", 
+            name: "internName",
+            message: "What is your First and Last name?",
+            validate: answer => {
+                if (answer !== " ") {
+                    return true 
+                } 
+                return "Please enter Intern's name"
+            }
+        },
+        {
+            type: "input", 
+            name: "internId",
+            message: "What is your company ID?",
+            validate: answer => {
+                const pass = answer.match(
+                    /^[1-9]\d*$/
+                )
+                if (pass) {
+                    if(idArray.includes(answer)) {
+                        return "This ID number is not valid"
+                    } else {
+                        return true
+                    }
+                }
+            }
+        },
+        {
+            type: "input", 
+            name: "internEmail",
+            message: "What is your company Email?",
+            validate: answer => {
+                const pass = answer.match(
+                    /\S+@\S+\.\S+/
+                )
+                if (pass) {
+                    return true
+                } 
+                return "Please enter a valid email address."
+            }
+        },
+        {
+            type: "input", 
+            name: "internSchool",
+            message: "What school do you attend?"
+        }
+    ]).then(answers => {
+        const intern = new Intern (answers.internName,answers.internId, answers.internEmail, answers.internSchool)
+        allEmployees.push(intern)
+        idArray.push(answers.internId)
+
+        generateEmployee();
+    })
+};
 
 // Build the team and render the HTML 
 function buildTeam() {
