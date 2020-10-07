@@ -44,9 +44,7 @@ function generateEmployee() {
                 default:
                     buildTeam();
             }
-        }); 
-        
-        
+        });   
 };
 
     // Make a Manager ===> function generateEmployee 
@@ -241,7 +239,7 @@ function generateEmployee() {
             fs.mkdirSync(OUTPUT_DIR)
         }
         fs.writeFileSync(outputPath, render(allEmployees), "utf-8");  
-    }
+    };
 
 // After the user has input all employees desired, call the `render` function (required
 // above) and pass in an array containing all employee objects; the `render` function will
