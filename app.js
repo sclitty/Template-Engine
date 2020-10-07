@@ -27,8 +27,8 @@ function generateEmployee() {
             name: "role",
             message: "What is your company title?",
             choices: ["Manager", "Engineer", "Intern", "Quit"]
-        }).then(function({ choice }){
-            switch (choice) {
+        }).then(function({ role }){
+            switch (role) {
                 case "Manager":
                     createManager();
                     break;
@@ -44,7 +44,9 @@ function generateEmployee() {
                 default:
                     buildTeam();
             }
-        });     
+        }); 
+        
+        
 };
 
     // Make a Manager ===> function generateEmployee 
